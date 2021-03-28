@@ -1,12 +1,17 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +32,9 @@ public class Course implements Serializable{
 
 	@Column(name = "IMG_GRAY_URI", length = 200)
 	private String imgGrayUri;
+
+	@OneToMany(mappedBy = "course")
+	private Set<Offer> offers = new HashSet<Offer>();
 
 	public Course() {
 
@@ -70,6 +78,10 @@ public class Course implements Serializable{
 
 	public void setImgGrayUri(String imgGrayUri) {
 		this.imgGrayUri = imgGrayUri;
+	}
+
+	public Set<Offer> getOffers() {
+		return offers;
 	}
 
 	@Override
