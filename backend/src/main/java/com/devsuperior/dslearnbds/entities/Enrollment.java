@@ -1,10 +1,13 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
@@ -27,6 +30,9 @@ public class Enrollment {
 
 	@Column(name = "ONLY_UPDATE")
 	private boolean onlyUpdate;
+
+	@ManyToMany(mappedBy = "enrollmentsDone")
+	private Set<Lesson> lessonsDone = new HashSet<Lesson>();
 
 	public Enrollment() {
 
@@ -88,5 +94,9 @@ public class Enrollment {
 
 	public void setOnlyUpdate(boolean onlyUpdate) {
 		this.onlyUpdate = onlyUpdate;
+	}
+
+	public Set<Lesson> getLessonsDone() {
+		return lessonsDone;
 	}
 }
