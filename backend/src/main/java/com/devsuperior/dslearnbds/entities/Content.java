@@ -13,17 +13,17 @@ public class Content extends Lesson {
 	@Column(name = "TEXT_CONTENT", length = 100)
 	private String textContent;
 
-	@Column(name = "VIDEO_UN", length = 100)
-	private String videoUn;
+	@Column(name = "VIDEO_URI", length = 200)
+	private String videoUri;
 
 	public Content() {
 
 	}
 
-	public Content(Long id, String title, Integer position, Section section, String textContent, String videoUn) {
+	public Content(Long id, String title, Integer position, Section section, String textContent, String videoUri) {
 		super(id, title, position, section);
 		this.textContent = textContent;
-		this.videoUn = videoUn;
+		this.videoUri = videoUri;
 	}
 
 	public String getTextContent() {
@@ -34,11 +34,11 @@ public class Content extends Lesson {
 		this.textContent = textContent;
 	}
 
-	public String getVideoUn() {
-		return videoUn;
+	public String getVideoUri() {
+		return videoUri;
 	}
 
-	public void setVideoUn(String videoUn) {
-		this.videoUn = videoUn;
+	public void setVideoUri(String videoUri) {
+		this.videoUri = videoUri;
 	}
 }
