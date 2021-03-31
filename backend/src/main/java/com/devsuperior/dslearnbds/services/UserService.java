@@ -24,8 +24,13 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private AuthService authService;
+
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+
+		this.authService.validateSelfOrAdmin(id);
 
 		Optional<User> obj = this.userRepository.findById(id);
 
